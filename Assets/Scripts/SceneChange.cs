@@ -1,16 +1,21 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
-public class SceneChange : MonoBehaviour
+using UnityEngine.SceneManagement;
+// This component can be used to access methods for changing the scene, and
+//quitting the game
+// It can be used together with UnityEventOnTrigger, or UI-button-events, to decide
+//when a scene should be changed or the game should be closed
+public class SceneChangeHandler : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void ChangeScene()
     {
-        
+// Load the scene next scene in queue
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-
-    // Update is called once per frame
-    void Update()
+    public void QuitGame()
     {
-        
+        Debug.Log ("Quit Game");
+        Application.Quit();
     }
 }
